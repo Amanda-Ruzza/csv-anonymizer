@@ -7,8 +7,10 @@ HASH_SALT="keij3ka2Hie2lilie1aiwab5oaQuooth"
 salted_value = "{}{}".format(account_id, HASH_SALT) # combines the 'Customer Account ID number' with the 'HASH_SALT'
 
 # Using the Hashlib function to create a random/anonymized account ID
+
 anonymized_value=str(hashlib.sha1(salted_value.encode("utf-8")).hexdigest())[:12]
 print (f"This is the 'Anonymized Account ID number': ", anonymized_value)
+
 # print(anonymized_value)
 
 #
