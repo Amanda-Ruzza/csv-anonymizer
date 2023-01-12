@@ -10,8 +10,3 @@ salted_value = "{}{}".format(account_id, HASH_SALT) # combines the 'Customer Acc
 
 anonymized_value=str(hashlib.sha1(salted_value.encode("utf-8")).hexdigest())[:12]
 print (f"This is the 'Anonymized Account ID number': ", anonymized_value)
-
-# print(anonymized_value)
-
-#
-# In order for the 'float' to work (line 5), use the 'Index Column' from the people-100.csv file
