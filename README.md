@@ -1,7 +1,7 @@
 # CSV Anonymizer
 Python script that extracts a column from a CSV file, anonymizes the data from one specific column, and writes into a new CSV file
 
-## Running Instructions:
+## Running Instructions
 
 - The original file needs to be either in the project folder, or a full path
 - The original file needs to have a ``Header`` 
@@ -12,6 +12,8 @@ Python script that extracts a column from a CSV file, anonymizes the data from o
  ``-c, or --column`` is the name of the column which needs to be anonymized
 
 
-## Future Improvements:
-- Create a handle that defines weather if the file has a Header
+## Future Improvements
+- Create a handle that defines weather if the file has a ``Header`` or not
+- Create a loop that handles files without a ``Header``
 - Create an exeption handling for when the file is not in the project folder
+- Implement the ``click`` package instead of the ``sys`` aiming to create a more dynamic CLI for the user
