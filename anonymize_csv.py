@@ -1,9 +1,9 @@
+# Opens a CSV file, parses it, writes and deletes specified columns into a new "edited" CSV file
 import csv
 
 with open('people-100.csv', 'r') as csv_file:
     csv_reader = csv.DictReader(csv_file)
 
-    #should I anonymize just the email field here?
 
     with open('new-people-100.csv', 'w') as new_file:
         fieldnames = ['Index', 'First Name', 'Last Name', 'Email', 'Job Title']
