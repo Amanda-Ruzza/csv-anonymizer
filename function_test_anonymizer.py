@@ -1,4 +1,4 @@
-from anonymize_csv import hash_field
+from anonymize_full_script import hash_field
 
 
 def test_hash_field():
