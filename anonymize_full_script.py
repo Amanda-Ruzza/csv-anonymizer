@@ -12,7 +12,7 @@ HASH_SALT = "keij3ka2Hie2lilie1aiwab5oaQuooth"
 def main(argv):
     inputfile = ''
     outputfile = ''
-    columnname = ''
+    columnnames = []
     try:
        opts, args = getopt.getopt(argv[1:],"hi:o:c:",["ifile=","ofile=", "column="])
     except getopt.GetoptError:
@@ -27,10 +27,10 @@ def main(argv):
        elif opt in ("-o", "--ofile"):
            outputfile = arg
        elif opt in ("-c", "--column"):
-           columnname = arg
+           columnnames = arg.split(',')
 
     logger.info('Input file is: ', inputfile)
-    parse_file(inputfile, outputfile, columnname)
+    parse_file(inputfile, outputfile, columnnames)
     logger.info('Output file is: ', outputfile)
 
 def hash_field(field: str) -> str:
@@ -38,7 +38,7 @@ def hash_field(field: str) -> str:
     return str(hashlib.sha1(salted_value.encode("utf-8")).hexdigest())[:12]
 
 
-def parse_file(input_file_name, output_file_name, columname):
+def parse_file(input_file_name, output_file_name, columns_to_hash):
     with open(input_file_name, 'r') as csv_file:
         csv_reader = csv.DictReader(csv_file)
         with open(output_file_name, 'w') as new_file:
@@ -50,7 +50,9 @@ def parse_file(input_file_name, output_file_name, columname):
             csv_writer.writeheader() # writes the header from the original CSV into the new one
 
             for line in csv_reader:
-                line[columname] = hash_field(line[columname])
+                for column in columns_to_hash:
+                    line[column] = hash_field(line[column])
+                    
                 csv_writer.writerow(line)
 
 
